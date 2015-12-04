@@ -7,27 +7,27 @@ import java.util.UUID;
 public class BaseEvent {
     private String          eventId;
     private long            timestamp;
-    private Source          origin;
+    private Source source;
     private List<Reference> references;
 
     public BaseEvent() {
         this.eventId = UUID.randomUUID().toString();
         this.timestamp = java.lang.System.currentTimeMillis();
-        this.origin = new Source();
+        this.source = new Source();
         this.references = new ArrayList<Reference>();
     }
 
     public BaseEvent(Source source) {
         this.eventId = UUID.randomUUID().toString();
         this.timestamp = java.lang.System.currentTimeMillis();
-        this.origin = source;
+        this.source = source;
         this.references = new ArrayList<Reference>();
     }
 
     public BaseEvent(Source source, List<Reference> references) {
         this.eventId = UUID.randomUUID().toString();
         this.timestamp = java.lang.System.currentTimeMillis();
-        this.origin = source;
+        this.source = source;
         this.references = references;
     }
 
@@ -39,8 +39,8 @@ public class BaseEvent {
         return timestamp;
     }
 
-    public Source getOrigin() {
-        return origin;
+    public Source getSource() {
+        return source;
     }
 
     public void addReference(Reference reference) {
@@ -48,7 +48,7 @@ public class BaseEvent {
     }
 
     public Boolean hasReferences() {
-        return references.isEmpty();
+        return references.isEmpty() ? false : true;
     }
 
     public List<Reference> getReferences() {
