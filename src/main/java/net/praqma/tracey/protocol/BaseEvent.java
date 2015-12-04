@@ -43,6 +43,10 @@ public class BaseEvent {
         return origin;
     }
 
+    public void addReference(Reference reference) {
+        references.add(reference);
+    }
+
     public Boolean hasReferences() {
         return references.isEmpty();
     }
