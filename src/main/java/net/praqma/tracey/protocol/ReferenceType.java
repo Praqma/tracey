@@ -1,7 +1,8 @@
 package net.praqma.tracey.protocol;
 
-/**
- * Created by andrey on 2015-12-04.
- */
-public class ReferenceType {
+public enum ReferenceType {
+    ANCESTOR, // Previous of the same type
+    REASON,   // Previous in the same delivery pipeline, i.e. cause for this event
+    CONTAINS  // Aggregation
 }
+
