@@ -12,7 +12,7 @@ public class EventFactory {
     private static final Logger log = Logger.getLogger( EventFactory.class.getName() );
     private static final String DEFAULT = "undefined";
 
-    private String getResourceNameOrNull() {
+    private static String getResourceNameOrNull() {
         String resourceName = null;
         ProtocolConfiguration.DescriptorImpl descriptor = (ProtocolConfiguration.DescriptorImpl)
                 Jenkins.getInstance().getDescriptor(ProtocolConfiguration.class);
@@ -22,7 +22,7 @@ public class EventFactory {
         return resourceName;
     }
 
-    private String getHostNameOrNull() {
+    private static String getHostNameOrNull() {
         try {
             return InetAddress.getLocalHost().getCanonicalHostName();
         } catch (UnknownHostException e) {
@@ -31,17 +31,17 @@ public class EventFactory {
         return null;
     }
 
-    private String getEventId() {
+    private static String getEventId() {
         return UUID.randomUUID().toString();
     }
 
-    private long getTimeStamp() {
+    private static long getTimeStamp() {
         return java.lang.System.currentTimeMillis();
     }
 
-    public Event create(){
-        Event.Builder event = Event.newBuilder();
-        Source.Builder source = Source.newBuilder();
+    protected static Event.Builder prepareBaseEvent() {
+        final Event.Builder event = Event.newBuilder();
+        final Source.Builder source = Source.newBuilder();
 
         source.setHostName(getHostNameOrNull() != null ? getHostNameOrNull() : DEFAULT);
         source.setResourceName(getResourceNameOrNull() != null ? getResourceNameOrNull() : DEFAULT);
@@ -50,6 +50,6 @@ public class EventFactory {
         event.setEventId(getEventId());
         event.setTimeStamp(getTimeStamp());
 
-        return event.build();
+        return event;
     }
 }

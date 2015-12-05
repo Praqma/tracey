@@ -1,23 +1,56 @@
 package net.praqma.tracey.protocol;
 
 message Event {
-  optional string event_id = 1;
-  optional int64  time_stamp = 2;
-  optional Source source = 3;
+  optional string    event_id = 1;
+  optional int64     time_stamp = 2;
+  optional Source    source = 3;
   repeated Reference references = 4;
+  oneof event_data {
+    TestResult       test_result = 100;
+    Artifact         artifact = 101;
+    SourceCodeChange s_c_change = 102;
+  }
+}
+
+message TestResult {
+  enum TestResultType {
+    SUCCESS = 0;  // All good
+    UNSTABLE = 1; // Failed test case, new warning during static/dynamic analysis and etc
+    FAILED = 2;   // Execution was interrupted by unrecoverable error
+    SKIPPED = 3;  // Skipped is skipped
+    ABORTED = 4;  // Aborted by user/timeout
+  }
+  optional string         test_id = 1; // Test case/suite name, static analysis phase - lint and etc, ...
+  optional TestResultType result = 2;
+}
+
+message Artifact {
+  optional string group = 1;
+  optional string id = 2;
+  optional string version = 3;
+  optional string promotion_level = 4;  // Current promotion level. Example - untested, function tested, release candidate
+}
+
+message SourceCodeChange {
+  optional string repo = 1;
+  optional string id = 2;
+  optional string title = 3;
+  optional string author = 4;
+  optional string work_item = 5;
 }
 
 message Source {
-    optional string host_name = 1;
-    optional string resource_name = 2;
+  optional string host_name = 1;
+  optional string resource_name = 2;
 }
 
 message Reference {
   enum ReferenceType {
-    ANCESTOR = 1; // Previous of the same type
-    REASON = 2;   // Previous in the same delivery pipeline, i.e. cause for this event
-    CONTAINS = 3;  // Aggregation
+    ANCESTOR = 0; // Previous of the same type
+    REASON = 1;   // Previous in the same delivery pipeline, i.e. cause for this event
+    CONTAINS = 2; // Aggregation
+    TESTS = 3;    // Use for test messages in order to point out artifact under test
   }
   optional ReferenceType type = 1;
-  optional string id = 2;
+  optional string id = 2;  // Event id
 }
