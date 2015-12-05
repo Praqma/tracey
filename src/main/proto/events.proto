@@ -1,15 +1,15 @@
 package net.praqma.tracey.protocol;
 
 message Event {
-  required string event_id = 1;
-  required int64  time_stamp = 2;
-  required Source source = 3;
+  optional string event_id = 1;
+  optional int64  time_stamp = 2;
+  optional Source source = 3;
   repeated Reference references = 4;
 }
 
 message Source {
-    required string host_name = 1;
-    required string resource_name = 2;
+    optional string host_name = 1;
+    optional string resource_name = 2;
 }
 
 message Reference {
@@ -18,6 +18,6 @@ message Reference {
     REASON = 2;   // Previous in the same delivery pipeline, i.e. cause for this event
     CONTAINS = 3;  // Aggregation
   }
-  required ReferenceType type = 1;
-  required string id = 2;
+  optional ReferenceType type = 1;
+  optional string id = 2;
 }
