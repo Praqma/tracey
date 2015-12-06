@@ -12,4 +12,4 @@ slave:
     - master:master
   volumes:
     - $HOME/.ssh:/var/jenkins_home/.ssh
-    - $HOME/backup/slaves:/var/jenkins_home/workspace
+    - $HOME/backup/slaves:/var/jenkins_home/

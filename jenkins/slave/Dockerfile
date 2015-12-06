@@ -26,7 +26,7 @@ RUN apt-get update
 RUN apt-get install -y net-tools
 
 # Install tools required for the jobs
-RUN apt-get install -y git maven
+RUN apt-get install -y git maven libprotobuf-java protobuf-compiler
 
 RUN curl --create-dirs -sSLo /usr/share/jenkins/swarm-client-$JENKINS_SWARM_VERSION-jar-with-dependencies.jar http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/$JENKINS_SWARM_VERSION/swarm-client-$JENKINS_SWARM_VERSION-jar-with-dependencies.jar \
   && chmod 755 /usr/share/jenkins
