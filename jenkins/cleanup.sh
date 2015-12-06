@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+set -e
+
+docker-compose stop
+docker-compose rm -f

@@ -1,0 +1,15 @@
+master:
+  build: master/
+  ports:
+    - 8080:8080
+    - 50000:50000
+  volumes:
+    - $HOME/.ssh:/var/jenkins_home/.ssh
+    - $HOME/backup/jobs:/var/jenkins_home/jobs
+slave:
+  build: slave/
+  links:
+    - master:master
+  volumes:
+    - $HOME/.ssh:/var/jenkins_home/.ssh
+    - $HOME/backup/slaves:/var/jenkins_home/workspace
