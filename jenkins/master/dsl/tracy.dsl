@@ -10,7 +10,13 @@ job('tracy-master-pretested'){
         scm('* * * * *')
     }
     steps {
-        shell('cd jenkins/ && ./build.sh')
+        shell('cd jenkins/master && ./build.sh')
         shell('mvn clean install pmd:pmd')
+    }
+    publishers {
+        // Collect PMD report
+        pmd('build/reports/pmd/*.xml')
+        // Collect compilation warnings
+        warnings(['Java Compiler (javac)'])
     }
 }

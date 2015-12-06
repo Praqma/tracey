@@ -2,12 +2,21 @@ public class JobHelpers{
    /*
    * Use this function to add log rotation to description section in job configuration
    *
-   * @param context     Job instance
+   * @param context         Job instance
+   * @param timeoutValue    Default timeout for jobds in seconds
+   * @param numBuildsToKeep Number of builds to keep
    */
 
-    static void addDefaultSettings(context){
+    static void addDefaultSettings(context, timeoutValue=180, numBuildsToKeep=200){
         context.logRotator {
-            numToKeep(20)
+            numToKeep(numBuildsToKeep)
+        }
+        context.wrappers {
+            timestamps()
+            timeout {
+                absolute(timeoutValue)
+                failBuild()
+            }
         }
     }
 
@@ -33,10 +42,8 @@ public class JobHelpers{
                 for(branchname in branchnames) {
                     branch(branchname)
                 }
-                browser {
-                   gitLab(browsertype, browserversion)
-                }
-                recursiveSubmodules isRecursive
+                recursiveSubmodules(isRecursive)
+                wipeOutWorkspace()
             }
         }
     }

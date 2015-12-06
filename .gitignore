@@ -1,5 +1,7 @@
-~*
+*~
 *.iml
+*.xml
+*.log
 .idea
 .tmp
 target
