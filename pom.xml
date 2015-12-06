@@ -43,12 +43,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.5</version>
-		<configuration>
-		  <excludeRoots>
-		    <excludeRoot>target</excludeRoot>
-                    <excludeRoot>jenkins</excludeRoot>
-		  </excludeRoots>
-		</configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

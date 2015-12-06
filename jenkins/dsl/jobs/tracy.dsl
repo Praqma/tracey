@@ -11,7 +11,7 @@ job('tracy-master-pretested'){
     }
     steps {
         shell('cd jenkins/dsl && ./gradlew buildXml')
-        shell('mvn clean install pmd:pmd')
+        shell('mvn pmd:pmd clean install')
     }
     publishers {
         // Collect PMD report
