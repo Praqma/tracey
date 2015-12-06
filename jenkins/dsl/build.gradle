@@ -1,0 +1,33 @@
+apply plugin: "groovy"
+apply plugin: 'application'
+
+sourceCompatibility = '1.8'
+
+mainClassName='tracy'
+description = "Tracy jobs"
+
+task buildXml(type: JavaExec) {
+    main = 'javaposse.jobdsl.Run'
+    classpath = sourceSets.main.runtimeClasspath
+    args "${project.projectDir}/jobs/tracy.dsl"
+    workingDir '.'
+}
+
+sourceSets {
+  jobs {
+    groovy {
+      srcDirs 'jobs'
+    }
+  }
+}
+
+repositories {
+  maven { url 'http://repo.jenkins-ci.org/releases/' }
+  mavenCentral()
+}
+
+dependencies {
+  compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.1'
+  compile group: 'org.jenkins-ci.plugins', name: 'job-dsl-core', version: '1.40'
+  testCompile group: 'org.spockframework', name: 'spock-core', version: '1.0-groovy-2.4'
+}

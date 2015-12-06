@@ -3,6 +3,7 @@
 *.xml
 *.log
 .idea
-.tmp
+.gradle
+build
 target
 work

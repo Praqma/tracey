@@ -10,7 +10,7 @@ job('tracy-master-pretested'){
         scm('* * * * *')
     }
     steps {
-        shell('cd jenkins/master && ./build.sh')
+        shell('cd jenkins/dsl && ./gradlew buildXml')
         shell('mvn clean install pmd:pmd')
     }
     publishers {

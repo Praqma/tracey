@@ -46,6 +46,7 @@
 		<configuration>
 		  <excludeRoots>
 		    <excludeRoot>target</excludeRoot>
+                    <excludeRoot>jenkins</excludeRoot>
 		  </excludeRoots>
 		</configuration>
             </plugin>
