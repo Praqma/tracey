@@ -15,7 +15,7 @@ job('tracy-master-pretested'){
     }
     publishers {
         // Collect PMD report
-        pmd('build/reports/pmd/*.xml')
+        pmd('target/pmd.xml')
         // Collect compilation warnings
         warnings(['Java Compiler (javac)'])
     }
