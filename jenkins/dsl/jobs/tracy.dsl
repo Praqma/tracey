@@ -18,5 +18,7 @@ job('tracy-master-pretested'){
         pmd('target/pmd.xml')
         // Collect compilation warnings
         warnings(['Java Compiler (javac)'])
+        // Collect unit test results
+        archiveJunit('target/surefire-reports/*.xml')
     }
 }
