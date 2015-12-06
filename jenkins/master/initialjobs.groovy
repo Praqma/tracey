@@ -40,12 +40,12 @@ def scm = new GitSCM(usersconfig, branches, false, submoduleCnf, null, null, nul
 project.setScm(scm)
 
 // Get script execute from checked out git repository:
-def jobDslBuildStep = new ExecuteDslScripts(scriptLocation=new ExecuteDslScripts.ScriptLocation(value = "false", targets="jenkins/master/dsl/*.dsl", scriptText=""),
+def jobDslBuildStep = new ExecuteDslScripts(scriptLocation=new ExecuteDslScripts.ScriptLocation(value = "false", targets="jenkins/dsl/jobs/*.dsl", scriptText=""),
                                             ignoreExisting=false,
                                             removedJobAction=RemovedJobAction.DELETE,
                                             removedViewAction=RemovedViewAction.DELETE,
                                             lookupStrategy=LookupStrategy.JENKINS_ROOT,
-                                            additionalClasspath='jenkins/master/dsl/jobhelpers');
+                                            additionalClasspath='jenkins/dsl/src/main/groovy/net/praqma/tracy/job');
 
 project.getBuildersList().add(jobDslBuildStep)
 project.addTrigger(new TimerTrigger("@midnight"))
