@@ -3,13 +3,13 @@ apply plugin: 'application'
 
 sourceCompatibility = '1.8'
 
-mainClassName='tracy'
-description = "Tracy jobs"
+mainClassName='tracey'
+description = "Tracey jobs"
 
 task buildXml(type: JavaExec) {
     main = 'javaposse.jobdsl.Run'
     classpath = sourceSets.main.runtimeClasspath
-    args "${project.projectDir}/jobs/tracy.dsl"
+    args "${project.projectDir}/jobs/tracey.dsl"
     workingDir '.'
 }
 

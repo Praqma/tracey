@@ -2,9 +2,9 @@ import static JobHelpers.addScmBlock
 import static JobHelpers.addDefaultSettings
 import static JobHelpers.addpretestedIntegration
 
-job('tracy-master-pretested'){
+job('tracey-master-pretested'){
     addDefaultSettings(delegate)
-    addScmBlock(delegate, 'git@github.com:Andrey9kin/tracy.git', 'jenkins', ['*/ready/**'])
+    addScmBlock(delegate, 'git@github.com:Praqma/tracey.git', '100247a2-70f4-4a4e-a9f6-266d139da9db', ['*/ready/**'])
     addpretestedIntegration(delegate)
     triggers {
         scm('* * * * *')
