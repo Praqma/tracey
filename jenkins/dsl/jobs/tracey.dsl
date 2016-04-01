@@ -4,7 +4,7 @@ import static JobHelpers.addpretestedIntegration
 
 job('tracey-master-pretested'){
     addDefaultSettings(delegate)
-    addScmBlock(delegate, 'git@github.com:Praqma/tracey.git', '100247a2-70f4-4a4e-a9f6-266d139da9db', ['*/ready/**'])
+    addScmBlock(delegate, 'https://github.com/Praqma/tracey.git', '100247a2-70f4-4a4e-a9f6-266d139da9db', ['*/ready/**'])
     addpretestedIntegration(delegate)
     triggers {
         scm('* * * * *')
