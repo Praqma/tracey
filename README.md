@@ -3,6 +3,10 @@
 * SoW http://www.josra.org/sow/tracey.html
 * TBD
 
+### Content
+
+* jenkins. Jenkins setup to run pretested integration and eventually release pipeline. Project is hosted in Praqma Jenkins so only jenkins/dsl is in use
+* src. Actual sources
 
 ### How to test
 
