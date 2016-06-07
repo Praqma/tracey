@@ -1,0 +1,26 @@
+language: java
+jdk:
+  - oraclejdk8
+
+install: /bin/true
+
+cache:
+  directories:
+    - $HOME/.m2
+
+branches:
+  only:
+    - /^ready\/.*$/
+
+env:
+  global:
+  - ENCRYPTION_LABEL: "12c8071d2874"
+  - COMMIT_AUTHOR_NAME: "Praqma"
+  - COMMIT_AUTHOR_EMAIL: "no-reply@praqma.com"
+  - TARGET_BRANCH: "master"
+  - TARGET_REPO: "git@github.com:Praqma/tracey.git"
+
+script:
+  - bash -ex ci/before.sh
+  - mvn test > /dev/null
+  - bash -ex ci/after.sh
