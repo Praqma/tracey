@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  jmaster:
+    build:
+      context: master/
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+
+  jslave:
+    build:
+      context: slave/
+
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - 15672:15672
+      - 5672:5672
