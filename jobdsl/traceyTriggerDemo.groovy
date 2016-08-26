@@ -32,6 +32,11 @@ def addGitSCM(def context, repoURL, branchName='master', credentialsId='') {
     }
 }
 
+filterRegEx = '\"type\":\\s*\"EiffelSourceChangeCreatedEvent\"'
+envInjRegEx = '''BRANCH_FROM_MESSAGE \"branch":\\s+\"([^"']+)\"
+REPO_FROM_MESSAGE \"repoUri\":\\s+\"([^"']+)\"
+'''
+
 job("tracey-demo-scm-trigger") {
     addDefaultParameters(delegate)
     addGitSCM(delegate, "\$REPO_FROM_MESSAGE", "\$BRANCH_FROM_MESSAGE")
@@ -39,10 +44,10 @@ job("tracey-demo-scm-trigger") {
             tracey('tracey', 'demo') {
             injectEnvironment {
                 payloadKey 'MESSAGE'
-                payloadInjection "REPO_FROM_MESSAGE "repoUri":\s+\"([^"']+)\", "BRANCH_FROM_MESSAGE "branch":\s+\"([^"']+)\""
+                payloadInjection envInjRegEx
             }
             filters {
-                payloadRegex '\"type\":\s*\"EiffelSourceChangeCreatedEvent\"'
+                payloadRegex filterRegEx
             }
         }
     }
