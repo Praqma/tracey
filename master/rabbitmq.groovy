@@ -10,10 +10,12 @@ properties.rabbitmq.each() { configName, serverConfig ->
   if(serverConfig.enabled) {
     println "--> Configure RabbitMQ: Server ${configName}"
     def servers = TraceyGlobalConfig.get().getConfiguredHosts()
-    TraceyHost server = new TraceyHost(serverConfig.host,
-                                       serverConfig.credentialsId,
-                                       serverConfig.description,
-                                       serverConfig.port)
+    TraceyHost server = new TraceyHost(serverConfig.host, 
+      serverConfig.credentialsId, 
+      serverConfig.description, 
+      serverConfig.port, 
+      serverConfig.hostId)
+    println "--> Tracey host server created"    
     if (servers == null || servers.empty) {
       servers = [server]
     } else {
