@@ -39,7 +39,7 @@ REPO_FROM_MESSAGE \"repoUri\":\\s+\"([^"']+)\"
 
 job("tracey-demo-scm-trigger") {
     addDefaultParameters(delegate)
-    addGitSCM(delegate, "\$REPO_FROM_MESSAGE", "\$BRANCH_FROM_MESSAGE")
+    addGitSCM(delegate, "\$REPO_FROM_MESSAGE_1", "\$BRANCH_FROM_MESSAGE_1")
         triggers {
             tracey('tracey', 'rabbit-host-id') {
             injectEnvironment {
