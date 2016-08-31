@@ -1,5 +1,6 @@
 ant:1.2
 antisamy-markup-formatter:1.1
+build-timeout:1.17.1
 credentials:1.18
 cvs:2.11
 external-monitor-job:1.4
@@ -21,6 +22,8 @@ ssh-slaves:1.9
 structs:1.3
 subversion:1.54
 swarm:2.0
+timestamper:1.8.5
+token-macro:1.12.1
 translation:1.10
 windows-slaves:1.0
 workflow-scm-step:2.2
