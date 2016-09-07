@@ -22,5 +22,6 @@ properties.rabbitmq.each() { configName, serverConfig ->
       servers.push(server)
     }
     TraceyGlobalConfig.get().setConfiguredHosts(servers)
+    TraceyGlobalConfig.get().save()
   }
 }
