@@ -1,7 +1,7 @@
 Just a note for myself
 
 curl -o tracey-protocol-eiffel-cli-generator.jar https://jitpack.io/com/github/Praqma/tracey-protocol-eiffel-cli-generator/235ace3ea8/tracey-protocol-eiffel-cli-generator-235ace3ea8.jar
-curl -o tracey-cli-rabbitmq.jar https://jitpack.io/com/github/Praqma/tracey-cli-rabbitmq/1.1.0/tracey-cli-rabbitmq-1.1.0.jar
+curl -o tracey-cli-rabbitmq.jar https://jitpack.io/com/github/Praqma/tracey-cli-rabbitmq/1.2.0/tracey-cli-rabbitmq-1.2.0.jar
 
 java -jar tracey-protocol-eiffel-cli-generator.jar EiffelSourceChangeCreatedEvent -p praqma-training/roadshow > out.json
 java -jar tracey-cli-rabbitmq.jar say -n $(docker-machine ip) -p 5672 -f out.json
