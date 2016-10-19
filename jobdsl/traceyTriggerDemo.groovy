@@ -41,7 +41,7 @@ job("tracey-demo-scm-trigger") {
     addDefaultParameters(delegate)
     addGitSCM(delegate, "\$REPO_FROM_MESSAGE_1", "\$BRANCH_FROM_MESSAGE_1")
         triggers {
-            tracey('tracey', 'direct', 'rabbit-host-id') {
+            tracey('tracey', 'topic', 'rabbit-host-id') {
             injectEnvironment {
                 payloadKey 'MESSAGE'
                 payloadInjection envInjRegEx
