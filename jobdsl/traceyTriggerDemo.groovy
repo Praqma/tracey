@@ -46,7 +46,6 @@ job("tracey-demo-scm-trigger") {
                 payloadInjection envInjRegEx
             }
             filters {
-                payloadRegex filterRegEx
                 payloadKeyValue 'type', 'EiffelSourceChangeCreatedEvent'
             }
         }
