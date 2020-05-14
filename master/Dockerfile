@@ -19,7 +19,8 @@ RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
 USER root
 RUN apk update && apk add ca-certificates && update-ca-certificates && apk add openssl
 USER jenkins
-RUN wget https://jitpack.io/com/github/praqma/tracey-jenkins-trigger-plugin/${TRACEY_PLUGIN_VERSION}/tracey-jenkins-trigger-plugin-${TRACEY_PLUGIN_VERSION}.hpi -O /usr/share/jenkins/ref/plugins/tracey.hpi
+
+RUN curl https://jitpack.io/com/github/praqma/tracey-jenkins-trigger-plugin/${TRACEY_PLUGIN_VERSION}/tracey-jenkins-trigger-plugin-${TRACEY_PLUGIN_VERSION}.hpi -o /usr/share/jenkins/ref/plugins/tracey.hpi
 
 # Copy configuration scripts that will be executed by groovy
 COPY *.groovy /usr/share/jenkins/ref/init.groovy.d/
